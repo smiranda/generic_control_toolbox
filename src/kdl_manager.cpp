@@ -257,8 +257,9 @@ bool KDLManager::getJointState(const std::string &end_effector_link,
                                const Eigen::VectorXd &qdot,
                                sensor_msgs::JointState &state) const
 {
-  if (chain_.find(end_effector_link) == chain_.end())
+  if (chain_.find(end_effector_link) == chain_.end() || chain_ == nullptr) 
   {
+    // TODO: Implement reservoir sampling
     return false;
   }
 
